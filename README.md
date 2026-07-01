@@ -37,13 +37,21 @@ This repository contains advanced Kafka concepts, real-world production scenario
 ---
 
 ✅ Producer
+
 ✅ Serializer
+
 ✅ Partition selection
+
 ✅ Leader broker
+
 ✅ Replication (ISR)
+
 ✅ ACK (acks=0, 1, all)
+
 ✅ Offset assignment
+
 ✅ Consumer poll
+
 ✅ Offset commit
 
 When a producer calls send(), Kafka first serializes the key and value using the configured serializers. It then determines the target partition. If a key is provided, Kafka hashes the key so that all messages with the same key go to the same partition; otherwise, it distributes the messages across partitions.
