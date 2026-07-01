@@ -36,6 +36,22 @@ This repository contains advanced Kafka concepts, real-world production scenario
 
 ---
 
+✅ Producer
+✅ Serializer
+✅ Partition selection
+✅ Leader broker
+✅ Replication (ISR)
+✅ ACK (acks=0, 1, all)
+✅ Offset assignment
+✅ Consumer poll
+✅ Offset commit
+
+When a producer calls send(), Kafka first serializes the key and value using the configured serializers. It then determines the target partition. If a key is provided, Kafka hashes the key so that all messages with the same key go to the same partition; otherwise, it distributes the messages across partitions.
+
+The producer sends the message to the leader broker for that partition. The leader appends the message to the partition log and assigns it an offset. Depending on the acks configuration, the leader may wait for follower replicas (ISR) before sending an acknowledgment to the producer.
+
+On the consumer side, consumers in a consumer group continuously poll for new messages. Each partition is assigned to only one consumer within the group. After successfully processing the message, the consumer commits the offset, either automatically or manually, so Kafka knows which messages have been processed.
+
 ## 📖 Notes
 
 All detailed interview notes, explanations, examples, and production scenarios are available in the **PDF** included in this repository.
